@@ -14,9 +14,15 @@ int example_cond_fun(void) {
 	int id1 = 0;
 	int id2 = 1;
 	int id3 = 2;
+	int id4 = 3;
 
+	if (entities[id4].x == entities[id1].x  &&  entities[id4].y == entities[id1].y) {
+		counter++;
+	}
 	if (entities[id1].x == entities[id2].x && entities[id1].y == entities[id2].y) {
-		return 1; // lose condition
+		counter++;
+		RE_delete_entity(id2);
+		// return 1; // lose condition
 	}
 	if (entities[id1].x == entities[id3].x && entities[id1].y == entities[id3].y) {
 		counter++;

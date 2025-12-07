@@ -192,7 +192,7 @@ void act_entity(app_hlpr_t *app, entity_t *ent) {
 			ent->y--;
 		}
 		// log_debug("follow entity is on %d, %d", ent->x, ent->y);
-	} else if (ent->beh = CUSTOM) {
+	} else if (ent->beh == CUSTOM) {
 		if (app->global_time - last_moved_time > 6) {
 			if (player.x > ent->x) {
 				ent->x++;
