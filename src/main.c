@@ -11,27 +11,24 @@ int example_cond_fun(void) {
 	struct entity* entities = get_entities();
 	int entities_num = get_entities_num();
 
-	int id1 = 0;
-	int id2 = 1;
-	int id3 = 2;
-	int id4 = 3;
+	int player = 0;
+	int enemy = 1;
+	int food[5] = {2, 3, 4, 5, 6};
 
-	if (entities[id4].x == entities[id1].x  &&  entities[id4].y == entities[id1].y) {
-		counter++;
+	// if (counter != 5 && entities[enemy].x == entities[player].x && entities[enemy].y == entities[player].y) {
+	// 	return 1;
+	// }
+	for (int id = 0; id < 5; id++) {
+		if (entities[food[id]].beh != DELETED && entities[player].x == entities[food[id]].x && entities[player].y == entities[food[id]].y) {
+			counter++;
+			RE_delete_entity(food[id]);
+		}
 	}
-	if (entities[id1].x == entities[id2].x && entities[id1].y == entities[id2].y) {
-		counter++;
-		RE_delete_entity(id2);
-		// return 1; // lose condition
-	}
-	if (entities[id1].x == entities[id3].x && entities[id1].y == entities[id3].y) {
-		counter++;
-	}
-	if (counter == 5) {
-		return 0; // win condition
+	if (counter == 5 && entities[enemy].x == entities[player].x && entities[enemy].y == entities[player].y) {
+		return 0;
 	}
 
-	return -1; // any other value is ignored
+	return -1;
 }
 
 int main(int argc, char *argv[]) {
@@ -57,8 +54,8 @@ int main(int argc, char *argv[]) {
 		return err;
 	}
 
-	app->win_screen_path = "/home/spisladqo/Downloads/spongebob.png";
-	app->lose_screen_path = "/home/spisladqo/Downloads/spongebob_youlost.png";
+	app->win_screen_path = "demo/assets/victory.png";
+	app->lose_screen_path = "demo/assets/victory.png";
 
 	app_run(app, example_cond_fun);
 

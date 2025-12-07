@@ -180,7 +180,7 @@ void act_entity(app_hlpr_t *app, entity_t *ent) {
 			break;
 		}
 	} else if (ent->beh == FOLLOW) {
-		int dist = 2;
+		int dist = 0;
 		if (player.x - ent->x > dist) {
 			ent->x++;
 		} else if (ent->x - player.x > dist) {
@@ -206,6 +206,8 @@ void act_entity(app_hlpr_t *app, entity_t *ent) {
 			}
 			last_moved_time = app->global_time;
 		}
+	} else if (ent->beh == STAND) {
+		return;
 	}
 
 	int max_x = app->grid.tile_num_x - 1;
