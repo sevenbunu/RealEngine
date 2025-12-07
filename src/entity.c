@@ -24,7 +24,7 @@ int RE_add_entity(int x, int y, enum e_behaviour beh) {
 		}
 	}
 
-	ent.asset_id = 0;
+	ent.asset_id = 3;
 	int id = curr_entities_num++;
 	entities[id] = ent;
 

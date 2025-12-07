@@ -208,7 +208,7 @@ void render_entities(app_hlpr_t *app) {
 
 			if (ent.beh == DELETED) continue;
 
-			asset_t *asset = RE_get_asset(2);
+			asset_t *asset = RE_get_asset(ent.asset_id - 1);
 			if (!asset) {
 				continue;
 			}

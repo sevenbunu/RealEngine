@@ -26,6 +26,8 @@ static enum e_behaviour get_entity_type_from_str(const char *str_name) {
 		return STAND;
 	if (!strcmp(str_name, "CUSTOM"))
 		return CUSTOM;
+	if (!strcmp(str_name, "ESCAPING"))
+		return ESCAPING;
 	return -1;
 }
 

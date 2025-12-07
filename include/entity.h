@@ -17,6 +17,7 @@ enum e_behaviour {
 	FOLLOW = 2,
 	STAND = 3,
 	CUSTOM = 4,
+	ESCAPING = 5,
 	// these should be more precise, to be added
 };
 

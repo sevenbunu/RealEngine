@@ -49,7 +49,9 @@ void assign_layers(grid_t *grid, map_layout_cfg_t *config) {
 					curr_entity_cfg = get_entity_with_type(config, shortcut);
 
 					if (curr_entity_cfg) {
-						RE_add_entity(x, y, curr_entity_cfg->type);
+						int id = RE_add_entity(x, y, curr_entity_cfg->type);
+						entity_t* ents = get_entities();
+						ents[id].asset_id = curr_entity_cfg-> asset_id;
 						parsed_entity_count++;
 					}
 				}

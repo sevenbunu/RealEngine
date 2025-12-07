@@ -14,14 +14,26 @@ int example_cond_fun(void) {
 	int player = 0;
 	int enemy = 1;
 	int food[5] = {2, 3, 4, 5, 6};
+	int bombs[3] = {7, 8, 9};
 
-	// if (counter != 5 && entities[enemy].x == entities[player].x && entities[enemy].y == entities[player].y) {
-	// 	return 1;
-	// }
+	if (counter == 5) {
+		entities[enemy].beh = ESCAPING;
+	}
+	if (counter != 5 && entities[enemy].x == entities[player].x && entities[enemy].y == entities[player].y) {
+		return 1;
+	}
 	for (int id = 0; id < 5; id++) {
 		if (entities[food[id]].beh != DELETED && entities[player].x == entities[food[id]].x && entities[player].y == entities[food[id]].y) {
 			counter++;
 			RE_delete_entity(food[id]);
+		}
+	}
+	for (int id = 0; id < 3; id++) {
+		if (entities[player].x == entities[bombs[id]].x && entities[player].y == entities[bombs[id]].y) {
+			return 1;
+		}
+		if (entities[enemy].x == entities[bombs[id]].x && entities[enemy].y == entities[bombs[id]].y) {
+			return 0;
 		}
 	}
 	if (counter == 5 && entities[enemy].x == entities[player].x && entities[enemy].y == entities[player].y) {
@@ -55,7 +67,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	app->win_screen_path = "demo/assets/victory.png";
-	app->lose_screen_path = "demo/assets/victory.png";
+	app->lose_screen_path = "demo/assets/lose.png";
 
 	app_run(app, example_cond_fun);
 

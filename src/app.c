@@ -208,6 +208,20 @@ void act_entity(app_hlpr_t *app, entity_t *ent) {
 		}
 	} else if (ent->beh == STAND) {
 		return;
+	} else if (ent->beh == ESCAPING) {
+		if (app->global_time - last_moved_time > 6) {
+			if (player.x >= ent->x && ent->x != 0) {
+				ent->x--;
+			} else if (ent->x >= player.x) {
+				ent->x++;
+			}
+			if (player.y >= ent->y && ent->y != 0) {
+				ent->y--;
+			} else if (ent->y >= player.y ) {
+				ent->y++;
+			}
+			last_moved_time = app->global_time;
+		}
 	}
 
 	int max_x = app->grid.tile_num_x - 1;
