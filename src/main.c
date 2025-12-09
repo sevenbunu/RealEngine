@@ -67,7 +67,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	app->win_screen_path = "demo/assets/victory.png";
-	app->lose_screen_path = "demo/assets/lose.png";
+	app->lose_screen_path = "demo/assets/gameover.png";
 
 	app_run(app, example_cond_fun);
 
